@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+
+<body>
+    <div ng-app="myApp" ng-controller="myCtrl">
+
+        Enter 2nd number<input type="number" ng-model="val1"> Enter 2nd number<input type="number" ng-model="val2"> Enter your choise<select ng-model="se">
+    <option value="A">Addition</option>
+    <option value="S">Subtraction</option>
+    <option value="D">Multiplaction</option>
+    <option value="M">Multiplaction</option>
+</select> {{result}}
+    </div>
+
+
+
+    <script>
+        var app = angular.module('myApp', []);
+        app.service('hexafy', function() {
+                    this.myFunc = (function() {
+
+                                var app = angular.module("CalculationApp", []);
+
+                                var calculationController = function($scope, calculationService) {
+
+                                    $scope.calculate = function() {
+                                        switch ($scope.operation) {
+                                            case "A":
+                                                $scope.result = calculationService.add($scope.val1, $scope.val2);
+                                                break;
+                                            case "S":
+                                                $scope.result = calculationService.subtract($scope.val1, $scope.val2);
+                                                break;
+                                            case "D":
+                                                $scope.result = calculationService.divide($scope.val1, $scope.val2);
+                                                break;
+                                            case "M":
+                                                $scope.result = calculationService.multiply($scope.val1, $scope.val2);
+                                                break;
+                                        }
+
+                                    };
+                                };
+    </script>
+
+</body>
+
+</html>
